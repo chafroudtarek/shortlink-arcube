@@ -9,6 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
+    "test:shortener": "jest /src/v1/modules/urlShortener/**/*.spec.ts --detectOpenHandles",
     "start:dev": "nest start --watch",
     "docker-start": "./scripts/start.sh",
     "docker-stop": "./scripts/stop.sh",

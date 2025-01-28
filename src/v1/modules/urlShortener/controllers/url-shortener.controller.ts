@@ -43,7 +43,6 @@ export class UrlShortenerController {
   @Redirect()
   async redirectToOriginalUrl(@Param('shortCode') shortCode: string) {
     const url = await this._urlShortenerService.getOriginalUrl(shortCode);
-    console.log('---->', url);
     return {
       url: url.originalUrl,
       statusCode: HttpStatus.MOVED_PERMANENTLY,
