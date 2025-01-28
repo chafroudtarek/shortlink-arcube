@@ -10,7 +10,7 @@ Please check out the repository to see the complete user interface.
 
 ## Demo Video
 
-![Demo](./demo/demo.mov)
+![Demo](./demo/demo.gif)
 
 ## Features
 
