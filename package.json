@@ -9,6 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
+    "test:shortener": "jest /src/v1/modules/urlShortener/**/*.spec.ts --detectOpenHandles",
     "start:dev": "nest start --watch",
     "docker-start": "./scripts/start.sh",
     "docker-stop": "./scripts/stop.sh",
@@ -55,6 +56,7 @@
     "pug": "^3.0.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
+    "shortid": "^2.2.17",
     "webpack": "^5.0.0",
     "winston": "^3.10.0",
     "winston-daily-rotate-file": "^4.7.1"
