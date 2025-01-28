@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+current_directory=$(pwd)
+yarn tsc
+yarn lint
+yarn format
+# yarn jest ".spec.ts" --coverage --detectOpenHandles
+# yarn jest --config "$current_directory/test/jest-e2e.json"
+# docker exec starterapi yarn run test:e2e

@@ -1,0 +1,64 @@
+# version: '3.8'
+services:
+  mongodbmain:
+    image: mongo:jammy
+    container_name: mongodbmain
+    restart: always
+    env_file:
+      - .env.docker
+    ports:
+      - '27017:27017'
+    command: 'mongod --bind_ip_all --replSet mongoSet --auth --keyFile /etc/mongox/keyfile.txt'
+    volumes:
+      - ./db/mongodbmain:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongoconf:/etc/mongox
+      - ./scripts/init_mongo_repl.sh:/etc/init_mongo_repl.sh
+    links:
+      - mongodb3
+      - mongodb2
+  mongodb2:
+    image: mongo:jammy
+    container_name: mongodb2
+    restart: always
+    env_file:
+      - .env.docker
+    command: 'mongod --bind_ip_all --replSet mongoSet --auth --keyFile /etc/mongox/keyfile.txt'
+    ports:
+      - '27018:27017'
+    volumes:
+      - ./db/mongodb2:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongoconf:/etc/mongox
+  mongodb3:
+    image: mongo:jammy
+    container_name: mongodb3
+    restart: always
+    env_file:
+      - .env.docker
+    command: 'mongod --bind_ip_all --replSet mongoSet --auth --keyFile /etc/mongox/keyfile.txt'
+    ports:
+      - '27019:27017'
+    volumes:
+      - ./db/mongodb3:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./mongoconf:/etc/mongox
+  starterapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: starterapi
+    restart: always
+    env_file:
+      - .env.docker
+    volumes:
+      - ./:/app
+    ports:
+      - '6003:6003'
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'localhost:6003']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    links:
+      - mongodbmain
