@@ -9,13 +9,17 @@ import { rolesRepositoryProviders } from './providers/roles/roles.repo.providers
 import { loggerProviders } from '../core/logger/logger.providers';
 import { unitOfWorkProviders } from './helpers/unitOfWork/unitOfWork.providers';
 import { asyncTransactionSessionProviders } from './helpers/unitOfWork/asyncTransactionSession.providers';
+import { urlsRepositoryProviders } from './providers/url/urls.repo.providers';
+import { urlsMongooseRepoProviders } from './providers/url/urls.mongoose.repo.providers';
 
 @Global()
 @Module({
   providers: [
     ...databaseProviders,
     ...usersMongooseRepoProviders,
+    ...urlsMongooseRepoProviders,
     ...usersRepositoryProviders,
+    ...urlsRepositoryProviders,
     ...permissionsMongooseRepoProviders,
     ...permissionsRepositoryProviders,
     ...rolesMongooseRepoProviders,
@@ -27,7 +31,9 @@ import { asyncTransactionSessionProviders } from './helpers/unitOfWork/asyncTran
   exports: [
     ...databaseProviders,
     ...usersMongooseRepoProviders,
+    ...urlsMongooseRepoProviders,
     ...usersRepositoryProviders,
+    ...urlsRepositoryProviders,
     ...permissionsMongooseRepoProviders,
     ...permissionsRepositoryProviders,
     ...rolesMongooseRepoProviders,

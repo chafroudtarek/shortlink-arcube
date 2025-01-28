@@ -10,6 +10,7 @@ import { AccountVerificationModule } from './v1/modules/accountVerification/acco
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { UrlShortenerModule } from './v1/modules/urlShortener/url-shortener.module';
 @Module({
   imports: [
     ThrottlerModule.forRoot({
@@ -28,6 +29,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     AuthModule,
     UserModule,
     AccountVerificationModule,
+    UrlShortenerModule,
   ],
   controllers: [AppController],
   providers: [AppService, ...loggerProviders],

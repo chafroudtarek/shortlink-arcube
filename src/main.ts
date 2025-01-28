@@ -44,8 +44,8 @@ async function bootstrap() {
     }),
   );
   const config = new DocumentBuilder()
-    .setTitle('Starter')
-    .setDescription(`Starter's Api Docs`)
+    .setTitle('Arcube')
+    .setDescription(`Arcube's Api Docs`)
     .setVersion('0.1')
     .addBearerAuth(
       {
@@ -61,6 +61,6 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
-  await app.listen(APP_CONFIG.PORT);
+  await app.listen(APP_CONFIG.PORT, '0.0.0.0');
 }
 bootstrap();
