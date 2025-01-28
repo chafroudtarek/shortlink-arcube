@@ -55,7 +55,7 @@ describe('UrlShortenerController', () => {
 
       expect(result).toEqual({
         originalUrl: mockUrl.originalUrl,
-        shortUrl: `http://localhost:6003/v1/urls/${mockUrl.shortCode}`,
+        shortUrl: `http://localhost:6003/v1/api/urls/${mockUrl.shortCode}`,
         shortCode: mockUrl.shortCode,
       });
     });
