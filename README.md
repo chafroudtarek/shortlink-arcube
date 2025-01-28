@@ -10,7 +10,7 @@ Please check out the repository to see the complete user interface.
 
 ## Demo Video
 
-<video src="./demo.mp4" controls width="600"></video>
+![Demo](./demo/demo.gif)
 
 ## Features
 
