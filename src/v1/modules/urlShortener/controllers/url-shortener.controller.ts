@@ -6,7 +6,7 @@ import { UrlShortenerService } from '../services/url-shortner.service';
 import { ApiTags, ApiOperation, ApiBody, ApiResponse } from '@nestjs/swagger';
 
 @ApiTags('ShortUrls')
-@Controller('urls/')
+@Controller('/api/urls/')
 export class UrlShortenerController {
   constructor(
     @Inject(URL_SHORTENER_SERVICE_PROVIDER_NAME)
@@ -34,7 +34,7 @@ export class UrlShortenerController {
 
     return {
       originalUrl: url.originalUrl,
-      shortUrl: `${baseUrl}/v1/urls/${url.shortCode}`,
+      shortUrl: `${baseUrl}/v1/api/urls/${url.shortCode}`,
       shortCode: url.shortCode,
     };
   }
