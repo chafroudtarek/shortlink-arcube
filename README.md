@@ -48,7 +48,7 @@ Please check out the repository to see the complete user interface.
 4. Run with Docker:
 
    ```bash
-   npm run docker-start
+   npm run docker-compose up --build -d
    ```
 
    Or run locally:
